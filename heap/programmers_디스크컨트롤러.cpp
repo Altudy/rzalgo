@@ -1,6 +1,7 @@
 #include <vector>
 #include <queue>
 #include <algorithm>
+#include <iostream>
 using namespace std;
 
 bool job_cmp(vector<int> a, vector<int> b) {
@@ -21,18 +22,17 @@ int solution(vector<vector<int>> jobs) {
     vector<int> times;
     int count_time = 0;
     int next_job = 0;
-    while (next_job < jobs.size()) {
+    while (next_job < jobs.size() || !pq.empty()) {
+        if (pq.empty() && count_time < jobs[next_job][0])
+            count_time = jobs[next_job][0];
         for (; next_job < jobs.size() && jobs[next_job][0] <= count_time; next_job++) {
             pq.push(make_pair(jobs[next_job][0], jobs[next_job][1]));
         }
-        if (pq.empty() && next_job < jobs.size()) {
-            count_time = jobs[next_job][0];
-            continue;
-        }
-        while (!pq.empty()) {
+
+        if (!pq.empty()) {
             pair<int, int> now_job = pq.top();
             pq.pop();
-
+            cout << now_job.first << " " << now_job.second << endl;
             count_time += now_job.second;
             times.push_back(count_time - now_job.first);
         }
