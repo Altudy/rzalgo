@@ -14,6 +14,8 @@ int solution(int bridge_length, int weight, vector<int> truck_weights) {
             tracked_weight += truck_weights[next_truck++];
         }
 
+
+
         for (int i = num_passed; i < next_truck; i++) {
             truck_progresses[i]++;
             if (truck_progresses[i] >= bridge_length) {

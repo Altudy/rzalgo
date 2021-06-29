@@ -41,13 +41,3 @@ int solution(vector<int> priorities, int location) {
     return answer;
 }
 
-
-int main() {
-    vector<int> priorities = { 2, 1, 3, 2 };
-    int location = 2;
-
-    int answer = solution(priorities, location);
-
-    return 0;
-
-}
