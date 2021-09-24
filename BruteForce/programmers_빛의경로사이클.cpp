@@ -31,7 +31,7 @@ vector<int> solution(vector<string> grid) {
 					int nextDir = nowDir;
 
 					nextY = (nextY + lenY) % (lenY);
-                    nextX = (nextX + lenX) % (lenX);
+                    			nextX = (nextX + lenX) % (lenX);
 
 					if (grid[nextY][nextX] == 'R') nextDir = (nextDir + 1 + 4) % 4;
 					if (grid[nextY][nextX] == 'L') nextDir = (nextDir - 1 + 4) % 4;
