@@ -3,28 +3,26 @@
 using namespace std;
 
 int answer;
-vector<vector<int>>* p_coms;
-int* p_n;
+int gn;
 vector<int> v_chk;
 
-void solve(int seq) {
+void solve(int seq, vector<vector<int>> &coms) {
         v_chk[seq] = 1;
-        for (int i = 0; i < *p_n; ++i) {
-            if (p_coms->at(seq).at(i) == 1 && v_chk[i] == 0) {
-                solve(i);
+        for (int i = 0; i < gn; ++i) {
+            if (coms[seq][i] == 1 && v_chk[i] == 0) {
+                solve(i, coms);
             }
         }
 }
 
 int solution(int n, vector<vector<int>> computers) {
     answer = 0;
-    p_coms = &computers;
-    p_n = &n;
+    gn = n;
     v_chk.assign(n, 0);
     
     for (int i = 0; i < n; i++) {
         if(v_chk[i] == 0){
-            solve(i);
+            solve(i, computers);
             answer++;
         }
     }
