@@ -26,20 +26,16 @@ vector<int> solution(vector<string> grid) {
 
 					check[nowY][nowX][nowDir] = true;
 
-					int nextY = nowY + dY[nowDir];
-					int nextX = nowX + dX[nowDir];
-					int nextDir = nowDir;
+					nowY += dY[nowDir];
+					nowX += dX[nowDir];
 
-					nextY = (nextY + lenY) % (lenY);
-                    			nextX = (nextX + lenX) % (lenX);
+					nowY = (nowY + lenY) % (lenY);
+                    			nowX = (nowX + lenX) % (lenX);
 
-					if (grid[nextY][nextX] == 'R') nextDir = (nextDir + 1 + 4) % 4;
-					if (grid[nextY][nextX] == 'L') nextDir = (nextDir - 1 + 4) % 4;
+					if (grid[nowY][nowX] == 'R') nextDir++;
+					if (grid[nowY][nowX] == 'L') nextDir--;
                     
-					nowDir = nextDir;
-					nowX = nextX;
-					nowY = nextY;
-
+					nowDir = (nowDir + 4) % 4
 					len++;
 				}
 				answer.push_back(len);
